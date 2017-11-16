@@ -1,6 +1,7 @@
 import model.{Pass_in_trip, Trip, _}
 import slick.jdbc.PostgresProfile.api._
 import java.sql.Timestamp._
+import com.github.tminglei.slickpg._
 import scala.concurrent.Await
 import scala.concurrent.duration._
 
@@ -54,7 +55,7 @@ object Main {
     map {case(pass,num)=>(num.length, pass._2)}.
     sortBy(_._2)
 
-  //val answer6 =
+  //val answer6 = TripTable.table.map(m=>(m.time_out-m.time_in))
   //val answer7 =
   val answer8 = Pass_in_tripTable.table.
     join(TripTable.table).on(_.trip_no === _.trip_no).
